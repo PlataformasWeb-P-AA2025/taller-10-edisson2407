@@ -1,0 +1,19 @@
+<h2>Parroquias y sus Barrios</h2>
+
+<a href="{% url 'crear_parroquia' %}">Añadir nueva parroquia</a> |
+<a href="{% url 'crear_barrio' %}">Añadir nuevo barrio</a> |
+<a href="{% url 'listar_barrios' %}">Ver todos los barrios</a>
+
+<ul>
+  {% for parroquia in parroquias %}
+    <li><strong>{{ parroquia.nombre }}</strong> ({{ parroquia.tipo }} - {{ parroquia.ubicacion }})
+      <ul>
+        {% for barrio in parroquia.barrio_set.all %}
+          <li>{{ barrio.nombre }}</li>
+        {% empty %}
+          <li>No tiene barrios registrados.</li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+</ul>

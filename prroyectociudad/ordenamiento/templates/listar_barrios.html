@@ -1,0 +1,10 @@
+<h2>Listado de Barrios</h2>
+
+<ul>
+  {% for barrio in barrios %}
+    <li>{{ barrio.nombre }} - {{ barrio.parroquia.nombre }}</li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'crear_barrio' %}">Añadir nuevo barrio</a> |
+<a href="{% url 'listar_parroquias' %}">Volver a listado de parroquias</a>
